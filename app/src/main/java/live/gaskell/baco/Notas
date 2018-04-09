@@ -1,0 +1,3 @@
+//Apollo-Codegen secuencia para importar schema de graphql
+cd C:\Users\carlo\Desktop\AndroidStudioProjects\Baco\app\src\main\graphql\live.gaskell.baco
+apollo-codegen introspect-schema https://api.graph.cool/simple/v1/cjfkiedkw399g0154dfo1tayt --output schema.json

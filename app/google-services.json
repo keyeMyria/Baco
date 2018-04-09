@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1054751571694",
+    "firebase_url": "https://baco-e5016.firebaseio.com",
+    "project_id": "baco-e5016",
+    "storage_bucket": "baco-e5016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054751571694:android:6a0718103d3ab4b8",
+        "android_client_info": {
+          "package_name": "live.gaskell.baco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054751571694-p2nmifpo5mj3vpr4cm6vghba7cr07tkf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "live.gaskell.baco",
+            "certificate_hash": "b2edd6bf0c97d98b797e062de1f9fd9888fd06a3"
+          }
+        },
+        {
+          "client_id": "1054751571694-ei8vji4ufgmi4tggap08ug0kfv07llnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5GR-loJOy4MNnJrPIuA6ORFHWF22FK1o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054751571694-ei8vji4ufgmi4tggap08ug0kfv07llnk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

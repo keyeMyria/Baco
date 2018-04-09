@@ -1,0 +1,6 @@
+mutation iniciarSesion($usuario: String!, $contrasena: String!){
+  signinUser(email:{email:$usuario,password:$contrasena})
+   {
+   token
+   }
+ }
