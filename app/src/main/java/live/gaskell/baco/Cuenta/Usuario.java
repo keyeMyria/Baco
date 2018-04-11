@@ -1,22 +1,23 @@
 package live.gaskell.baco.Cuenta;
 
 public class Usuario {
-    private String
-            Nombre,
-            Apellido,
-            Correo,
-            Sexo,
-            Fecha_de_nacimiento,
-            cedula_de_identidad,
-            id;
+    private String Usuario;
+    private String Nombre;
+    private String Apellido;
+    private String Correo;
+    private String Sexo;
+    private String Fecha_de_nacimiento;
+    private String Cedula_de_identidad;
+    private String Id;
+    private String Contraseña;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String correo) {
-        Nombre = nombre;
-        Apellido = apellido;
+    public Usuario(String usuario, String correo, String contraseña) {
+        Usuario = usuario;
         Correo = correo;
+        this.Contraseña = contraseña;
     }
 
     public String getNombre() {
@@ -60,18 +61,35 @@ public class Usuario {
     }
 
     public String getCedula_de_identidad() {
-        return cedula_de_identidad;
+        return Cedula_de_identidad;
     }
 
     public void setCedula_de_identidad(String cedula_de_identidad) {
-        this.cedula_de_identidad = cedula_de_identidad;
+        this.Cedula_de_identidad = cedula_de_identidad;
     }
 
     public String getId() {
-        return id;
+        return Id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.Id = id;
     }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        Usuario = usuario;
+    }
+
+    public String getContraseña() {
+        return Contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.Contraseña = contraseña;
+    }
+
 }

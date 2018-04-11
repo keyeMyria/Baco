@@ -1,5 +1,6 @@
 package live.gaskell.baco;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,11 +8,9 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import live.gaskell.baco.Cuenta.AccountsManager;
 import live.gaskell.baco.Cuenta.Credenciales;
+import live.gaskell.baco.Registro.RegistroActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -50,7 +49,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.buttonRegistrarse:
-
+                Intent i = new Intent(LoginActivity.this, RegistroActivity.class);
+                startActivity(i);
                 break;
         }
     }
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (email.isEmpty()) {
                 editTextEmail.setError("Necesario");
                 r = false;
-            } else if (!isEmailValid(email)) {
+            } else if (!Utils.isEmailValid(email)) {
                 editTextEmail.setError("Correo no valido");
                 r = false;
             }
@@ -76,16 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 editTextPassword.setError("Formato incompatible");
                 r = false;
             }
-
             return r;
-        }
-
-        //Validador de email
-        private static boolean isEmailValid(String email) {
-            String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(email);
-            return matcher.matches();
         }
     }
 }
