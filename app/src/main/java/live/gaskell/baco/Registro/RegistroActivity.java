@@ -1,13 +1,17 @@
 package live.gaskell.baco.Registro;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
@@ -15,6 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import live.gaskell.baco.BaseActivity;
+import live.gaskell.baco.Cuenta.AccountsManager;
+import live.gaskell.baco.Cuenta.Credenciales;
 import live.gaskell.baco.Cuenta.Usuario;
 import live.gaskell.baco.R;
 import live.gaskell.baco.Registro.RegistroFragments.FragmentRegistroCredenciales;
@@ -22,7 +29,7 @@ import live.gaskell.baco.Registro.RegistroFragments.FragmentRegistroDatosPersona
 import live.gaskell.baco.Registro.RegistroFragments.FragmentRegistroPoliticasFacturacion;
 import live.gaskell.baco.Utils;
 
-public class RegistroActivity extends AppCompatActivity {
+public class RegistroActivity extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.buttonRetroceder)
@@ -44,14 +51,25 @@ public class RegistroActivity extends AppCompatActivity {
             "REGISTRO_DATOS_PERSONALES", //1
             "REGISTRO_POLITICAS_FACTURACION"  //2
     };
+    //Validar usuario y correo existente en la base de datos
+    private Usuario usuario = new Usuario();
+    private Credenciales credenciales = new Credenciales();
+    private FirebaseAuth firebaseAuth;
+
+    private ToolbarManager toolbarManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         unbinder = ButterKnife.bind(this);
+        firebaseAuth = FirebaseAuth.getInstance();
         setFragmentManager();
 
+        toolbarManager = new ToolbarManager(toolbar, this);
+        toolbarManager.setTitulo("Registro");
+        toolbarManager.setSubTitulo("Credenciales");
+        toolbarManager.setDisplayHomeAsUpEnabled();
     }
 
     @Override
@@ -59,6 +77,7 @@ public class RegistroActivity extends AppCompatActivity {
         super.onDestroy();
         unbinder.unbind();
     }
+
 
     @OnClick({R.id.buttonRetroceder, R.id.buttonContinuar})
     public void onClick(View view) {
@@ -69,15 +88,20 @@ public class RegistroActivity extends AppCompatActivity {
             case R.id.buttonContinuar:
                 switch (positionManager) {
                     case 0:
-                        if (validarDatosPersonales()) {
+                        if (validarCredenciales()) {
                             nextFragment();
                         }
                         break;
                     case 1:
-
+                        if (validarDatosPersonales()) {
+                            nextFragment();
+                        }
                         break;
                     case 2:
-
+                        if (validarPoliticasFacturacion()) {
+                            AccountsManager.signUpGraphql(credenciales, this, usuario, view, firebaseAuth);
+                            Snackbar.make(view, "Cuenta creada", Snackbar.LENGTH_INDEFINITE);
+                        }
                         break;
                 }
                 break;
@@ -127,13 +151,53 @@ public class RegistroActivity extends AppCompatActivity {
         positionManager = position;
     }
 
-    //Validar usuario y correo existente en la base de datos
-    private Usuario usuario = new Usuario();
-
     /*
      * Validadores de datos
      * */
     private boolean validarDatosPersonales() {
+        boolean result = true;
+        TextInputEditText
+                editTextNombre = findViewById(R.id.editTextNombre),
+                editTextApellido = findViewById(R.id.editTextApellidos);
+        TextView textViewFecha = findViewById(R.id.textViewFecha);
+        Spinner genero = findViewById(R.id.spinnerGenero);
+
+        //Test
+        editTextNombre.setText("Carlos");
+        editTextApellido.setText("Gaskell Bravo");
+        textViewFecha.setText("15/01/1998");
+        usuario.setSexo("Masculino");
+
+        //Cambiar genero
+        usuario.setNombre(editTextNombre.getText().toString());
+        usuario.setApellido(editTextApellido.getText().toString());
+        usuario.setFecha_de_nacimiento(textViewFecha.getText().toString());
+        usuario.setSexo(genero.getSelectedItem().toString());
+
+        if (usuario.getNombre().isEmpty()) {
+            editTextNombre.setError("Necesario.");
+            result = false;
+        }
+
+        if (usuario.getApellido().isEmpty()) {
+            editTextApellido.setError("Necesario.");
+            result = false;
+        }
+
+        if (usuario.getFecha_de_nacimiento().equals("00/00/0000")) {
+            textViewFecha.setError("Necesario");
+            result = false;
+        }
+        /* revisar genero
+        if (usuario.getSexo().equals("Genero:")) {
+            Toast.makeText(this, "Genero necesario", Toast.LENGTH_SHORT).show();
+            result = false;
+        }*/
+
+        return result;
+    }
+
+    private boolean validarCredenciales() {
         boolean result = true;
         TextInputEditText
                 editTextUsuario = findViewById(R.id.editTextUsuario),
@@ -148,7 +212,8 @@ public class RegistroActivity extends AppCompatActivity {
 
         usuario.setUsuario(editTextUsuario.getText().toString());
         usuario.setCorreo(editTextCorreo.getText().toString());
-        usuario.setContraseña(editTextContrasena.getText().toString());
+        credenciales.setEmail(editTextCorreo.getText().toString(), getApplicationContext());
+        credenciales.setPassword(editTextContrasena.getText().toString(), getApplicationContext());
         String verificarContraseña = editTextVerificarContrasena.getText().toString();
 
         if (usuario.getUsuario().isEmpty()) {
@@ -167,10 +232,10 @@ public class RegistroActivity extends AppCompatActivity {
             result = false;
         }
 
-        if (usuario.getContraseña().isEmpty()) {
+        if (credenciales.getPassword().isEmpty()) {
             editTextContrasena.setError("Necesario.");
             result = false;
-        } else if (usuario.getContraseña().length() < 6) {
+        } else if (credenciales.getPassword().length() < 6) {
             editTextContrasena.setError("Longitud no valida");
             result = false;
         }
@@ -178,12 +243,12 @@ public class RegistroActivity extends AppCompatActivity {
         if (verificarContraseña.isEmpty()) {
             editTextVerificarContrasena.setError("Necesario.");
             result = false;
-        } else if (usuario.getContraseña().length() < 6) {
+        } else if (verificarContraseña.length() < 6) {
             editTextContrasena.setError("Longitud no valida");
             result = false;
         }
 
-        if (!Objects.equals(usuario.getContraseña(), verificarContraseña)) {
+        if (!Objects.equals(credenciales.getPassword(), verificarContraseña)) {
             editTextContrasena.setError("No coincide");
             editTextVerificarContrasena.setError("No coincide");
             result = false;
@@ -191,15 +256,45 @@ public class RegistroActivity extends AppCompatActivity {
         return result;
     }
 
-    private boolean validarCredenciales() {
-        boolean result = true;
-
-        return result;
-    }
-
     private boolean validarPoliticasFacturacion() {
         boolean result = true;
+        TextInputEditText
+                editTextCedula = findViewById(R.id.editTextCedula),
+                editTextTelefono = findViewById(R.id.editTextTelefono),
+                editTextDireccion = findViewById(R.id.editTextDireccion);
+        //Test
+        editTextCedula.setText("0950371096");
+        editTextTelefono.setText("0982315257");
+        editTextDireccion.setText("Atarazana Mz. L1 Villa 7");
 
+        usuario.setCedula(editTextCedula.getText().toString());
+        usuario.setTelefono(editTextTelefono.getText().toString());
+        usuario.setDireccion(editTextDireccion.getText().toString());
+
+        if (usuario.getCedula().isEmpty()) {
+            editTextCedula.setError("Necesario.");
+            result = false;
+        } else if (usuario.getCedula().length() < 10) {
+            editTextCedula.setError("No valido");
+            result = false;
+        }
+
+        if (usuario.getTelefono().isEmpty()) {
+            editTextTelefono.setError("Necesario");
+            result = false;
+        } else if (usuario.getTelefono().length() < 10) {
+            editTextTelefono.setError("No valido");
+            result = false;
+        }
+
+        if (usuario.getDireccion().isEmpty()) {
+            editTextTelefono.setError("No valido");
+            result = false;
+        } else if (usuario.getDireccion().length() < 8) {
+            editTextTelefono.setError("Datos incompletos");
+            result = false;
+        }
         return result;
     }
+
 }

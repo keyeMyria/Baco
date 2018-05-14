@@ -85,7 +85,13 @@ public class Apollo_Client implements UserInterface {
                 .addNetworkInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(@Nonnull Chain chain) throws IOException {
-                        return chain.proceed(chain.request().newBuilder().header(HEADER, AccountInformationManager.getAccountData(TOKEN, context)).build());
+                        return chain.proceed(chain.request()
+                                .newBuilder()
+                                .header(HEADER,
+                                        AccountInformationManager.getAccountData(
+                                                TOKEN,
+                                                context))
+                                .build());
                     }
                 }).build();
     }

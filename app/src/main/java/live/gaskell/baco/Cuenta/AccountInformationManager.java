@@ -8,8 +8,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class AccountInformationManager extends Credenciales {
 
 
-    public AccountInformationManager(Context context) {
-        super(context);
+    public AccountInformationManager() {
+
     }
 
     public static String getAccountData(String key, Context activity) {

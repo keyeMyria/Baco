@@ -7,9 +7,19 @@ public class Credenciales implements UserInterface {
     private String
             Email,
             Password,
-            Token;
+            Token,
+            UserId,
+            ClienteId;
 
-    public Credenciales(Context context) {
+    public Credenciales() {
+
+    }
+
+    public Credenciales(boolean Activate) {
+
+    }
+
+    public void getCredenciales(Context context) {
         this.Password = AccountInformationManager.getAccountData(UserInterface.PASSWORD, context);
         this.Email = AccountInformationManager.getAccountData(UserInterface.EMAIL, context);
         this.Token = AccountInformationManager.getAccountData(UserInterface.TOKEN, context);
@@ -21,7 +31,7 @@ public class Credenciales implements UserInterface {
 
     public void setEmail(String email, Context context) {
         Email = email;
-        AccountInformationManager.setAccountData(UserInterface.EMAIL, Email, context);
+        AccountInformationManager.setAccountData(UserInterface.EMAIL, email, context);
 
     }
 
@@ -32,7 +42,7 @@ public class Credenciales implements UserInterface {
 
     public void setPassword(String contraseña, Context context) {
         Password = contraseña;
-        AccountInformationManager.setAccountData(UserInterface.PASSWORD, Password, context);
+        AccountInformationManager.setAccountData(UserInterface.PASSWORD, contraseña, context);
 
     }
 
@@ -42,6 +52,26 @@ public class Credenciales implements UserInterface {
 
     public void setToken(String token, Context context) {
         Token = token;
-        AccountInformationManager.setAccountData(UserInterface.TOKEN, Token, context);
+        AccountInformationManager.setAccountData(UserInterface.TOKEN, token, context);
+    }
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId, Context context) {
+        UserId = userId;
+        AccountInformationManager.setAccountData(UserInterface.USERID, userId, context);
+
+    }
+
+    public String getClienteId() {
+        return ClienteId;
+    }
+
+    public void setClienteId(String clienteId, Context context) {
+        ClienteId = clienteId;
+        AccountInformationManager.setAccountData(UserInterface.CLIENTEID, clienteId, context);
+
     }
 }

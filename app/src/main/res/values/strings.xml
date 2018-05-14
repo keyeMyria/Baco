@@ -1,4 +1,19 @@
 <resources>
+    <string name="CARTA">Carta</string>
+    <string name="CARTELERA">Cartelera</string>
+
+    <string name="HISTORIAL">Historial de consumos</string>
+    <string name="METODOS_DE_PAGO">Metodos de pago</string>
+    <string name="CUENTA">Cuenta</string>
+
+    <string name="AGREGAR_CUENTA">Agregar cuenta</string>
+    <string name="ADMINISTRAR_CUENTA">Administrar cuenta</string>
+
+    <string name="CONFIGURACIONES">Configuraciones</string>
+    <string name="CERRAR_SESION">Cerrar Sesion</string>
+    <string name="ACERCA_DE">Acerca de</string>
+
+
     <string name="app_name">Baco</string>
     <string name="title_activity_main">MainActivity</string>
 </resources>

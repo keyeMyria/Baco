@@ -3,24 +3,42 @@ package live.gaskell.baco;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import live.gaskell.baco.Cuenta.AccountInformationManager;
 import live.gaskell.baco.Cuenta.AccountsManager;
 import live.gaskell.baco.Cuenta.Credenciales;
+import live.gaskell.baco.Cuenta.UserInterface;
 import live.gaskell.baco.Registro.RegistroActivity;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText editTextEmail, editTextPassword;
     private Credenciales credenciales;
     private FirebaseAuth mAuth;
+    private Toolbar toolbar;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (AccountInformationManager.getAccountData(UserInterface.TOKEN, this) != null && firebaseUser !=null) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }else {
+            Toast.makeText(this, "No loggeado", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -29,12 +47,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
 
-        credenciales = new Credenciales(getApplicationContext());
+        toolbar= findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ToolbarManager toolbarManager = new ToolbarManager(toolbar,this);
+        toolbarManager.setTitulo("Iniciar");
+
+        credenciales = new Credenciales();
 
         findViewById(R.id.buttonIniciar).setOnClickListener(this);
         findViewById(R.id.buttonRegistrarse).setOnClickListener(this);
         editTextEmail = findViewById(R.id.editTextCorreo);
         editTextPassword = findViewById(R.id.editTextPassword);
+        editTextEmail.setText("carlosgaskell@outlook.com");
+        editTextPassword.setText("CAgaskell98");
 
     }
 

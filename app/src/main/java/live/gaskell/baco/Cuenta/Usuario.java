@@ -1,23 +1,28 @@
 package live.gaskell.baco.Cuenta;
 
+import android.widget.TextView;
+
 public class Usuario {
     private String Usuario;
     private String Nombre;
     private String Apellido;
     private String Correo;
+    private String Telefono;
     private String Sexo;
     private String Fecha_de_nacimiento;
-    private String Cedula_de_identidad;
+    private String Cedula;
     private String Id;
-    private String Contraseña;
+    private String Direccion;
 
     public Usuario() {
     }
 
-    public Usuario(String usuario, String correo, String contraseña) {
-        Usuario = usuario;
-        Correo = correo;
-        this.Contraseña = contraseña;
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        Direccion = direccion;
     }
 
     public String getNombre() {
@@ -60,12 +65,12 @@ public class Usuario {
         Fecha_de_nacimiento = fecha_de_nacimiento;
     }
 
-    public String getCedula_de_identidad() {
-        return Cedula_de_identidad;
+    public String getCedula() {
+        return Cedula;
     }
 
-    public void setCedula_de_identidad(String cedula_de_identidad) {
-        this.Cedula_de_identidad = cedula_de_identidad;
+    public void setCedula(String cedula) {
+        this.Cedula = cedula;
     }
 
     public String getId() {
@@ -84,12 +89,12 @@ public class Usuario {
         Usuario = usuario;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+
+    public String getTelefono() {
+        return Telefono;
     }
 
-    public void setContraseña(String contraseña) {
-        this.Contraseña = contraseña;
+    public void setTelefono(String telefono) {
+        Telefono = telefono;
     }
-
 }

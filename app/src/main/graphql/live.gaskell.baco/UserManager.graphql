@@ -4,3 +4,37 @@ mutation iniciarSesion($usuario: String!, $contrasena: String!){
    token
    }
  }
+mutation setClienteOnUser($userID: ID!,$clienteID: ID!){
+   setClienteOnUser(userUserId:$userID,clienteClienteId:$clienteID){
+     clienteCliente{id}
+     userUser{id}
+   }
+ }
+mutation crearCliente(
+  $nombre:String!,
+  $apellido:String!,
+  $usuario:String!
+  $genero:String!
+  $fecha:String!
+  $telefono:String
+  $cedula:String
+  $direccion:String
+){
+  createCliente(
+    nombre: $nombre
+    apellido: $apellido
+    usuario: $usuario
+    genero: $genero
+    fechadenacimiento: $fecha
+    telefono: $telefono
+    cedula: $cedula
+    direccion: $direccion
+  ){
+    id
+  }
+  }
+mutation crearUsuario($email: String!, $password: String!){
+     createUser(authProvider:{email:{email:$email, password:$password}}){
+     id
+     }
+   }

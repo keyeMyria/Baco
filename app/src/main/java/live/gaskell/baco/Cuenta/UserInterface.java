@@ -5,6 +5,8 @@ public interface UserInterface {
             EMAIL = "EMAIL",
             TOKEN = "TOKEN",
             PASSWORD = "PASSWORD",
+            CLIENTEID = "CLIENTEID",
+            USERID = "USERID",
             ACCOUNT_PREFERENCES = "BACO_ACCOUNT_PREFERENCE";
 
 }
