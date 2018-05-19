@@ -1,0 +1,6 @@
+query AllCategoriaProductos{
+  allCategoriasProductoes{
+    id
+    nombre
+  }
+}

@@ -1,6 +1,7 @@
 package live.gaskell.baco;
 
 import android.content.Intent;
+import android.graphics.drawable.AdaptiveIconDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import live.gaskell.baco.Cuenta.AccountsManager;
+import live.gaskell.baco.MainActivityFragments.FragmentMainActivityCarta;
 
 public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemClickListener {
 
@@ -46,20 +48,6 @@ public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemCli
 
     private FirebaseAuth mAuth;
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        //add the values which need to be saved from the drawer to the bundle
-        outState = drawer.saveInstanceState(outState);
-        //add the values which need to be saved from the accountHeader to the bundle
-        outState = accountHeader.saveInstanceState(outState);
-        super.onSaveInstanceState(outState);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +59,11 @@ public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemCli
 
         setSupportActionBar(toolbar);
         toolbarManager = new ToolbarManager(toolbar, this);
-        toolbarManager.setTitulo("Carta");
+
+        cartaFragment = new FragmentMainActivityCarta();
+        fragment = cartaFragment;
+
+        setFragment(R.string.CARTA);
         setDrawer(savedInstanceState);
     }
 
@@ -92,12 +84,13 @@ public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemCli
         return builder.build(img, color);
     }
 
-    private String createLogoString(String nombre, String apellido) {
+    private String letras(String nombre, String apellido) {
         return (nombre.substring(0, 1) + apellido.substring(0, 1));
     }
 
     private void setDrawer(Bundle savedInstanceState) {
 
+// Set Account Header de la libreria MK
 
         accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -139,24 +132,30 @@ public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemCli
                                 .withName(R.string.CARTA)
                                 .withSelectable(true)
                                 .withIdentifier(R.string.CARTA)
-                                .withIcon(FontAwesome.Icon.faw_address_card),
+                                .withIcon(FontAwesome.Icon.faw_utensils),
                         new PrimaryDrawerItem()
                                 .withName(R.string.CARTELERA)
                                 .withSelectable(true)
                                 .withIdentifier(R.string.CARTELERA)
-                                .withIcon(FontAwesome.Icon.faw_utensils),
+                                .withIcon(GoogleMaterial.Icon.gmd_store),
                         new PrimaryDrawerItem()
                                 .withName(R.string.CUENTA)
                                 .withSelectable(true)
-                                .withIdentifier(R.string.CUENTA),
+                                .withIdentifier(R.string.CUENTA)
+                                .withIcon(FontAwesome.Icon.faw_clipboard)
+                        ,
                         new PrimaryDrawerItem()
                                 .withName(R.string.METODOS_DE_PAGO)
                                 .withSelectable(true)
-                                .withIdentifier(R.string.METODOS_DE_PAGO),
+                                .withIdentifier(R.string.METODOS_DE_PAGO)
+                                .withIcon(FontAwesome.Icon.faw_credit_card)
+                        ,
                         new PrimaryDrawerItem()
                                 .withName(R.string.HISTORIAL)
                                 .withSelectable(true)
                                 .withIdentifier(R.string.HISTORIAL)
+                                .withIcon(FontAwesome.Icon.faw_history)
+
                 )
                 .addStickyDrawerItems(new SecondaryDrawerItem()
                                 .withName(R.string.CONFIGURACIONES)
@@ -183,6 +182,15 @@ public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemCli
                 //.addToBackStack(null)
                 .replace(R.id.frame, fragment) //agragar un tag a fragment
                 .commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //add the values which need to be saved from the drawer to the bundle
+        outState = drawer.saveInstanceState(outState);
+        //add the values which need to be saved from the accountHeader to the bundle
+        outState = accountHeader.saveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -213,5 +221,11 @@ public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemCli
                 break;
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

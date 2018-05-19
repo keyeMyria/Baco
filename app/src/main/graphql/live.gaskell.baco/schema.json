@@ -263,6 +263,41 @@
           "possibleTypes": null
         },
         {
+          "inputFields": null,
+          "name": "AddToRestauranteOnProductoPayload",
+          "description": null,
+          "interfaces": [],
+          "enumValues": null,
+          "fields": [
+            {
+              "name": "restauranteRestaurante",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Restaurante",
+                "ofType": null
+              }
+            },
+            {
+              "name": "productoesProducto",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Producto",
+                "ofType": null
+              }
+            }
+          ],
+          "kind": "OBJECT",
+          "possibleTypes": null
+        },
+        {
           "inputFields": [
             {
               "name": "email",
@@ -938,6 +973,26 @@
                   "name": "String",
                   "ofType": null
                 }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restauranteId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductorestauranteRestaurante",
+                "ofType": null
               },
               "defaultValue": null
             },
@@ -3335,6 +3390,26 @@
               "defaultValue": null
             },
             {
+              "name": "restauranteId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductorestauranteRestaurante",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "categoriasProductosIds",
               "description": "",
               "type": {
@@ -3574,6 +3649,42 @@
                 "kind": "SCALAR",
                 "name": "ID",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoesIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "RestauranteproductoesProducto",
+                    "ofType": null
+                  }
+                }
               },
               "defaultValue": null
             }
@@ -4312,6 +4423,26 @@
                   "name": "String",
                   "ofType": null
                 }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restauranteId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductorestauranteRestaurante",
+                "ofType": null
               },
               "defaultValue": null
             },
@@ -6718,6 +6849,26 @@
               "defaultValue": null
             },
             {
+              "name": "restauranteId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductorestauranteRestaurante",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "categoriasProductosIds",
               "description": "",
               "type": {
@@ -7374,6 +7525,26 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "restauranteId",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "restaurante",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductorestauranteRestaurante",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "categoriasProductosIds",
                   "description": null,
                   "type": {
@@ -7615,6 +7786,42 @@
                     "kind": "SCALAR",
                     "name": "ID",
                     "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "productoesIds",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "ID",
+                        "ofType": null
+                      }
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "productoes",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "RestauranteproductoesProducto",
+                        "ofType": null
+                      }
+                    }
                   },
                   "defaultValue": null
                 }
@@ -8208,6 +8415,26 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "restauranteId",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "restaurante",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductorestauranteRestaurante",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "categoriasProductosIds",
                   "description": null,
                   "type": {
@@ -8439,6 +8666,42 @@
                     "kind": "SCALAR",
                     "name": "ID",
                     "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "productoesIds",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "ID",
+                        "ofType": null
+                      }
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "productoes",
+                  "description": null,
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "RestauranteproductoesProducto",
+                        "ofType": null
+                      }
+                    }
                   },
                   "defaultValue": null
                 }
@@ -9477,6 +9740,47 @@
               }
             },
             {
+              "name": "addToRestauranteOnProducto",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+                {
+                  "name": "productoesProductoId",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "restauranteRestauranteId",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "AddToRestauranteOnProductoPayload",
+                "ofType": null
+              }
+            },
+            {
               "name": "removeFromIngredientesProductoOnOpcionesIngredientes",
               "description": null,
               "isDeprecated": false,
@@ -9637,6 +9941,47 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "RemoveFromProductoOnIngredientesProductoPayload",
+                "ofType": null
+              }
+            },
+            {
+              "name": "removeFromRestauranteOnProducto",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+                {
+                  "name": "productoesProductoId",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "restauranteRestauranteId",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "RemoveFromRestauranteOnProductoPayload",
                 "ofType": null
               }
             },
@@ -11843,6 +12188,16 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "RestauranteFilter",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "name": "ProductoSubscriptionFilterNode",
@@ -12150,6 +12505,177 @@
           "possibleTypes": null
         },
         {
+          "inputFields": [
+            {
+              "name": "apellido",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "cargo",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "cedula",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "direccion",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "fechadenacimiento",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "genero",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nombre",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "telefono",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "usuario",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "userId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoesIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "RestauranteproductoesProducto",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "name": "ProductorestauranteRestaurante",
+          "description": null,
+          "interfaces": null,
+          "enumValues": null,
+          "fields": null,
+          "kind": "INPUT_OBJECT",
+          "possibleTypes": null
+        },
+        {
           "inputFields": null,
           "name": "RemoveFromIngredientesProductoOnOpcionesIngredientesPayload",
           "description": null,
@@ -12282,6 +12808,41 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "IngredientesProducto",
+                "ofType": null
+              }
+            }
+          ],
+          "kind": "OBJECT",
+          "possibleTypes": null
+        },
+        {
+          "inputFields": null,
+          "name": "RemoveFromRestauranteOnProductoPayload",
+          "description": null,
+          "interfaces": [],
+          "enumValues": null,
+          "fields": [
+            {
+              "name": "restauranteRestaurante",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Restaurante",
+                "ofType": null
+              }
+            },
+            {
+              "name": "productoesProducto",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Producto",
                 "ofType": null
               }
             }
@@ -14132,6 +14693,36 @@
               "defaultValue": null
             },
             {
+              "name": "productoes_every",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductoFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes_some",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductoFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes_none",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductoFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "user",
               "description": null,
               "type": {
@@ -14219,6 +14810,197 @@
             }
           ],
           "kind": "OBJECT",
+          "possibleTypes": null
+        },
+        {
+          "inputFields": [
+            {
+              "name": "descripcion",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "dificultad",
+              "description": "",
+              "type": {
+                "kind": "ENUM",
+                "name": "Dificultad",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "nombre",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "precio",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "precioPromocion",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "tiempoProduccion",
+              "description": "",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "categoriasProductosIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "categoriasProductos",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductocategoriasProductosCategoriasProducto",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "etiquetasProductosIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "etiquetasProductos",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductoetiquetasProductosEtiquetasProducto",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ingredientesProductosIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ingredientesProductos",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductoingredientesProductosIngredientesProducto",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "name": "RestauranteproductoesProducto",
+          "description": null,
+          "interfaces": null,
+          "enumValues": null,
+          "fields": null,
+          "kind": "INPUT_OBJECT",
           "possibleTypes": null
         },
         {
@@ -15181,6 +15963,26 @@
               "defaultValue": null
             },
             {
+              "name": "restauranteId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductorestauranteRestaurante",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "categoriasProductosIds",
               "description": "",
               "type": {
@@ -15410,6 +16212,42 @@
                 "kind": "SCALAR",
                 "name": "ID",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoesIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "RestauranteproductoesProducto",
+                    "ofType": null
+                  }
+                }
               },
               "defaultValue": null
             }
@@ -16900,6 +17738,42 @@
                   "kind": "SCALAR",
                   "name": "String",
                   "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoesIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "RestauranteproductoesProducto",
+                    "ofType": null
+                  }
                 }
               },
               "defaultValue": null
@@ -23740,6 +24614,29 @@
               }
             },
             {
+              "name": "restaurante",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+                {
+                  "name": "filter",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "RestauranteFilter",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Restaurante",
+                "ofType": null
+              }
+            },
+            {
               "name": "tiempoProduccion",
               "description": null,
               "isDeprecated": false,
@@ -25016,6 +25913,16 @@
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "IngredientesProductoFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "restaurante",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "RestauranteFilter",
                 "ofType": null
               },
               "defaultValue": null
@@ -27082,7 +27989,7 @@
         {
           "inputFields": null,
           "name": "Restaurante",
-          "description": null,
+          "description": "",
           "interfaces": [
             {
               "kind": "INTERFACE",
@@ -27213,6 +28120,97 @@
               }
             },
             {
+              "name": "productoes",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+                {
+                  "name": "filter",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductoFilter",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "orderBy",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ProductoOrderBy",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "skip",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Producto",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            {
               "name": "telefono",
               "description": null,
               "isDeprecated": false,
@@ -27259,6 +28257,93 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "name": "_productoesMeta",
+              "description": "Meta information about the query.",
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+                {
+                  "name": "filter",
+                  "description": "",
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ProductoFilter",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "orderBy",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "ProductoOrderBy",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "skip",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "_QueryMeta",
                   "ofType": null
                 }
               }
@@ -28861,6 +29946,36 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes_every",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductoFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes_some",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductoFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "productoes_none",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ProductoFilter",
                 "ofType": null
               },
               "defaultValue": null

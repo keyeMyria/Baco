@@ -1,25 +1,27 @@
 package live.gaskell.baco;
 
-import android.app.ActionBar;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.support.v7.widget.Toolbar;
 
-import java.util.TooManyListenersException;
+import java.util.Objects;
 
 import live.gaskell.baco.Cuenta.UserInterface;
 
+@SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity implements UserInterface {
 
     @VisibleForTesting
     public static ProgressDialog mProgressDialog;
+
 
     public static void showProgressDialog(String mensaje, Context context) {
         if (mProgressDialog == null) {
@@ -40,7 +42,7 @@ public class BaseActivity extends AppCompatActivity implements UserInterface {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
-        mProgressDialog=null;
+        mProgressDialog = null;
     }
 
     public void hideKeyboard(View view) {
@@ -89,8 +91,8 @@ public class BaseActivity extends AppCompatActivity implements UserInterface {
         public void setDisplayHomeAsUpEnabled() {
             if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
                 Log.e("funciona", "verdadero");
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+                Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+                Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setDisplayShowHomeEnabled(true);
             }
 
         }
@@ -127,7 +129,7 @@ public class BaseActivity extends AppCompatActivity implements UserInterface {
 
         public void setTitulo(String titulo) {
             this.Titulo = titulo;
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(titulo);
+            Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setTitle(titulo);
         }
     }
 
