@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import live.gaskell.baco.BaseActivity;
+import live.gaskell.baco.Activitys.BaseActivity;
 import live.gaskell.baco.Cuenta.AccountsManager;
 import live.gaskell.baco.Cuenta.Credenciales;
 import live.gaskell.baco.Cuenta.Usuario;

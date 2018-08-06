@@ -1,6 +1,38 @@
 query AllCategoriaProductos{
-  allCategoriasProductoes{
+  allCategorias{
     id
     nombre
+  }
+}
+query AllItems($id: ID!){
+  Categoria(id: $id){
+    id
+    items{
+      id
+      nombre
+    }
+    }
+}
+query AllSubCategoria($id: ID!){
+  Categoria(id: $id){
+    items{
+      subCategorias{
+        id
+        nombre
+      }
+    }
+   }
+}
+query AllProductosOnSubCategoria($id: ID!){
+ SubCategoria(id: $id){
+  productos{
+    id
+    nombre
+    descripcion
+    precio
+    precioPromocion
+  	tiempoProduccion
+    dificultad
+    }
   }
 }

@@ -1,11 +1,9 @@
 package live.gaskell.baco.Cuenta;
 
-import android.accounts.Account;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -24,11 +22,11 @@ import java.util.concurrent.Executor;
 import javax.annotation.Nonnull;
 
 import live.gaskell.baco.ApolloClient.Apollo_Client;
-import live.gaskell.baco.BaseActivity;
+import live.gaskell.baco.Activitys.BaseActivity;
 import live.gaskell.baco.CrearClienteMutation;
 import live.gaskell.baco.CrearUsuarioMutation;
 import live.gaskell.baco.IniciarSesionMutation;
-import live.gaskell.baco.MainActivity;
+import live.gaskell.baco.Activitys.MainActivity;
 import live.gaskell.baco.SetClienteOnUserMutation;
 
 import static android.content.ContentValues.TAG;
@@ -116,7 +114,7 @@ public class AccountsManager extends AccountInformationManager {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        credenciales.setToken(response.data().signinUser().token().toString(), activity);
+                         credenciales.setToken(response.data().signinUser().token().toString(), activity);
                         Intent i = new Intent(activity, MainActivity.class);
                         activity.startActivity(i);
                         activity.finish();

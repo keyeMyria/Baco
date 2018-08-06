@@ -1,11 +1,11 @@
 package live.gaskell.baco.MainActivityFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +16,24 @@ import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
+import com.mikepenz.fastadapter.IItem;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.listeners.OnClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.RecursiveAction;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import butterknife.ButterKnife;
+import live.gaskell.baco.Activitys.ItemsActivity;
 import live.gaskell.baco.AllCategoriaProductosQuery;
 import live.gaskell.baco.ApolloClient.Apollo_Client;
 import live.gaskell.baco.ItemFast.ItemFastCategoria;
+import live.gaskell.baco.Activitys.MainActivity;
 import live.gaskell.baco.R;
 
 public class FragmentMainActivityCarta extends Fragment {
@@ -51,15 +56,27 @@ public class FragmentMainActivityCarta extends Fragment {
         itemAdapterCategorias = new ItemAdapter();
         fastAdapterCategorias = FastAdapter.with(itemAdapterCategorias);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(rootView.getContext(), 2);
+        viewDataCategorias();
 
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(rootView.getContext(), 2);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(fastAdapterCategorias);
 
-        viewDataCategorias();
+        //fastAdapterCategorias.withSelectable(true);
+        fastAdapterCategorias.withOnClickListener(new OnClickListener() {
+            @Override
+            public boolean onClick(@Nullable View v, IAdapter adapter, IItem item, int position) {
+                Intent intent = new Intent(getActivity(), ItemsActivity.class);
+                intent.putExtra("ID", itemFastCategoriaList.get(position).getId());
+                intent.putExtra("NOMBRE", itemFastCategoriaList.get(position).getNombre());
+                startActivity(intent);
+                return true;
+            }
+        });
 
         return rootView;
+
     }
 
     /**
@@ -75,7 +92,7 @@ public class FragmentMainActivityCarta extends Fragment {
                         Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                for (AllCategoriaProductosQuery.AllCategoriasProducto data : response.data().allCategoriasProductoes()) {
+                                for (AllCategoriaProductosQuery.AllCategoria data : response.data().allCategorias()) {
                                     itemFastCategoriaList.add(new ItemFastCategoria()
                                             .withId(data.id())
                                             .withNombre(data.nombre())

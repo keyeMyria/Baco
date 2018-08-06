@@ -1,7 +1,6 @@
-package live.gaskell.baco;
+package live.gaskell.baco.Activitys;
 
 import android.content.Intent;
-import android.graphics.drawable.AdaptiveIconDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -30,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import live.gaskell.baco.Cuenta.AccountsManager;
 import live.gaskell.baco.MainActivityFragments.FragmentMainActivityCarta;
+import live.gaskell.baco.R;
 
 public class MainActivity extends BaseActivity implements Drawer.OnDrawerItemClickListener {
 

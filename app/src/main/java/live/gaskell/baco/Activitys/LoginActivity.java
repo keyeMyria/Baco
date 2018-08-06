@@ -1,4 +1,4 @@
-package live.gaskell.baco;
+package live.gaskell.baco.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,9 @@ import live.gaskell.baco.Cuenta.AccountInformationManager;
 import live.gaskell.baco.Cuenta.AccountsManager;
 import live.gaskell.baco.Cuenta.Credenciales;
 import live.gaskell.baco.Cuenta.UserInterface;
+import live.gaskell.baco.R;
 import live.gaskell.baco.Registro.RegistroActivity;
+import live.gaskell.baco.Utils;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 

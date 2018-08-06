@@ -1,12 +1,16 @@
 package live.gaskell.baco.ItemFast;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
 import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.commons.utils.FastAdapterUIUtils;
 import com.mikepenz.fastadapter.items.AbstractItem;
 import com.mikepenz.materialize.holder.StringHolder;
+import com.mikepenz.materialize.util.UIUtils;
 
 import java.util.List;
 
@@ -23,11 +27,13 @@ public class ItemFastCategoria extends AbstractItem<ItemFastCategoria, ItemFastC
         return new ViewHolder(v);
     }
 
+    //Devuelve el id asignado
     @Override
     public int getType() {
         return R.id.item_categoria_id;
     }
 
+    //Devuelve el layout
     @Override
     public int getLayoutRes() {
         return R.layout.item_carta_categoria;
@@ -48,6 +54,10 @@ public class ItemFastCategoria extends AbstractItem<ItemFastCategoria, ItemFastC
         return String.valueOf(this.Id);
     }
 
+    public String getNombre() {
+        return String.valueOf(this.Nombre);
+    }
+
     protected static class ViewHolder extends FastAdapter.ViewHolder<ItemFastCategoria> {
         protected View view;
 
@@ -62,6 +72,8 @@ public class ItemFastCategoria extends AbstractItem<ItemFastCategoria, ItemFastC
 
         @Override
         public void bindView(ItemFastCategoria item, List<Object> payloads) {
+            Context ctx = itemView.getContext();
+            UIUtils.setBackground(view, FastAdapterUIUtils.getSelectableBackground(ctx, Color.LTGRAY, true));
             StringHolder.applyTo(item.Nombre, nombre);
         }
 

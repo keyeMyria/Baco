@@ -28,7 +28,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 
 public class Apollo_Client implements UserInterface {
-    private static final String BaseUrl = "https://api.graph.cool/simple/v1/cjfkiedkw399g0154dfo1tayt";
+    private static final String BaseUrl = "https://api.graph.cool/simple/v1/cjflp3lh24nhc0168a15kjvcl";
     private static final String HEADER = "Authorization";
 
 

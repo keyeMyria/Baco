@@ -1,4 +1,4 @@
-package live.gaskell.baco;
+package live.gaskell.baco.Activitys;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
