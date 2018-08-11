@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.mikepenz:fastadapter:3.2.4@aar'
     implementation 'com.mikepenz:fastadapter-extensions:1.5.1@aar'
 
+
     implementation('com.mikepenz:aboutlibraries:6.0.2@aar') {
         transitive = true
     }
